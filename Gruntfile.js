@@ -5,8 +5,8 @@ module.exports = function (grunt) {
 	require('load-grunt-tasks')(grunt);
 	grunt.loadNpmTasks("grunt-git-dist");
 
-	grunt.registerTask("build", ["exec:make","copy:dist","urequire","uglify"]);
-	grunt.registerTask("default", ["clean:dist","build", "clean:swf"]);
+	grunt.registerTask("build", ["exec:make", "copy:dist", "urequire", "uglify"]);
+	grunt.registerTask("default", ["clean:dist", "build", "clean:swf"]);
 	grunt.registerTask("release", [
 		"clean:dist",
 		"git-dist:release:clone",
@@ -17,7 +17,7 @@ module.exports = function (grunt) {
 		"git-dist:release:push"
 	]);
 
-	grunt.event.on("git-describe", function(git_version) {
+	grunt.event.on("git-describe", function (git_version) {
 		grunt.config("pkg.version", grunt.config("pkg.version") + "+" + git_version.object);
 	});
 
@@ -43,8 +43,8 @@ module.exports = function (grunt) {
 			dist: {
 				files: [
 					{
-						expand : true,
-						src: ["recorder.js","recorder.swf","require.js", "module.js"],
+						expand: true,
+						src: ["recorder.js", "recorder.swf", "require.js", "module.js"],
 						dest: "dist"
 					}
 				]
@@ -55,29 +55,29 @@ module.exports = function (grunt) {
 				template: "AMD",
 				path: 'dist',
 				filez: ["recorder.js"],
-                // Export global Recorder for bridging flash.
-                dependencies: {
-                    exports: {
-                        root: {
-                            "recorder": "Recorder"
-                        }
-                    }
-                },
-                resources: [
-                    [
-                        '+exportsVars',
-                        ["recorder.js"],
-                        function (m) {
-                            m.afterBody = "module.exports = Recorder;"
-                        }
-                    ]
-                ],
-                forceOverwriteSources: true
+				// Export global Recorder for bridging flash.
+				dependencies: {
+					exports: {
+						root: {
+							"recorder": "Recorder"
+						}
+					}
+				},
+				resources: [
+					[
+						'+exportsVars',
+						["recorder.js"],
+						function (m) {
+							m.afterBody = "module.exports = Recorder;"
+						}
+					]
+				],
+				forceOverwriteSources: true
 			}
 		},
 		uglify: {
 			dist: {
-				src: [ "<banner>", "dist/recorder.js" ],
+				src: ["<banner>", "dist/recorder.js"],
 				dest: "dist/recorder.min.js"
 			}
 		},
@@ -96,12 +96,12 @@ module.exports = function (grunt) {
 				gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d'
 			}
 		},
-		"git-dist" : {
-			"release" : {
-				"options" : {
-					"branch" : "dist",
-					"dir" : "dist",
-					"message" : "Built <%= pkg.name %> - <%= pkg.version %>"
+		"git-dist": {
+			"release": {
+				"options": {
+					"branch": "dist",
+					"dir": "dist",
+					"message": "Built <%= pkg.name %> - <%= pkg.version %>"
 				}
 			}
 		}

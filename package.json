@@ -1,19 +1,25 @@
 {
   "name": "recorder.js",
   "version": "0.3.8",
-  "dependencies": {
+  "main": "dist/recorder.js",
+  "dependencies": {},
+  "devDependencies": {
+    "flex-sdk": "^4.6.0-0",
     "grunt": ">=0.4.1",
-    "underscore": "~1.5.2",
-    "load-grunt-tasks": "~0.2.0",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-uglify": "~0.2.7",
-    "grunt-contrib-copy": "~0.4.1",
     "grunt-bump": "0.0.11",
-    "grunt-git-dist": "~0.4.0",
-    "grunt-util-options": "0.0.2",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-uglify": "~0.2.7",
     "grunt-exec": "~0.4.2",
     "grunt-git-describe": "~2.3.2",
-    "grunt-urequire": "0.6.0"
+    "grunt-git-dist": "~0.4.0",
+    "grunt-urequire": "0.6.0",
+    "grunt-util-options": "0.0.2",
+    "load-grunt-tasks": "~0.2.0",
+    "underscore": "~1.5.2"
+  },
+  "scripts": {
+    "build": "grunt build"
   },
   "engines": {
     "node": ">=0.6.0"
