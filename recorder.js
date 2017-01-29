@@ -89,11 +89,17 @@
       this.flashInterface().encode(audioFormat);
     },
 
+	getEncodedData: function() {
+		return this.flashInterface().getEncodedData();
+	},
+
     audioData: function (newData) {
       var delimiter = ";", newDataSerialized, stringData, data = [], sample;
       if (newData) {
         newDataSerialized = newData.join(";");
       }
+	  
+	  return this.flashInterface().audioData(newDataSerialized);
       stringData = this.flashInterface().audioData(newDataSerialized).split(delimiter);
       for (var i = 0; i < stringData.length; i++) {
         sample = parseFloat(stringData[i]);
@@ -185,7 +191,7 @@
       if (ct.children.length)
         ct = ct.firstElementChild;
       ct.appendChild(flashElement);
-      swfobject.embedSWF(this.options.swfSrc, "recorderFlashObject", "500", "500", "11.0.0", undefined, undefined, {allowscriptaccess: "always"}, undefined, function (e) {
+      swfobject.embedSWF(this.options.swfSrc, "recorderFlashObject", "501", "501", "11.0.0", undefined, undefined, {allowscriptaccess: "always"}, undefined, function (e) {
         var userAgent = navigator.userAgent.toLowerCase();
         var version = swfobject.getFlashPlayerVersion();
 
@@ -221,8 +227,8 @@
       // IMPORTANT: MUST keep the Flash partially visible to make sure encoding rate
       flashContainer.style.width = "1px";
       flashContainer.style.height = "1px";
-      flashContainer.style.left = "-230px";
-      flashContainer.style.top = "-140px";
+      flashContainer.style.left = "-500px";
+      flashContainer.style.top = "-500px";
     },
 
     /*
