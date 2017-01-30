@@ -89,7 +89,6 @@ var Recorder = {
     if (newData) {
       newDataSerialized = newData.join(";");
     }
-    return this.flashInterface().audioData(newDataSerialized);
     stringData = this.flashInterface().audioData(newDataSerialized).split(delimiter);
     for (var i = 0; i < stringData.length; i++) {
       sample = parseFloat(stringData[i]);
