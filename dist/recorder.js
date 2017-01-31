@@ -172,14 +172,12 @@ var Recorder = {
     if (ct.children.length)
       ct = ct.firstElementChild;
     ct.appendChild(flashElement);
-    console.log("recorder.js --> embed", this.options.swfSrc);
     swfobject.embedSWF(this.options.swfSrc, "recorderFlashObject", "501", "501", "11.0.0", undefined, undefined, { allowscriptaccess: "always" }, undefined, function (e) {
       var userAgent = navigator.userAgent.toLowerCase();
       var version = swfobject.getFlashPlayerVersion();
       if (/windows nt 5.1/.test(userAgent) && (version.major === 11 && version.minor === 6)) {
         e.success = false;
       }
-      console.log("recorder.js --> callback", e);
       if (e.success) {
         Recorder.swfObject = e.ref;
         Recorder._checkForFlashBlock();
