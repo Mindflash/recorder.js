@@ -77,8 +77,10 @@ var Recorder = {
     });
     this.flashInterface().upload(options.url, options.audioParam, options.params, options.audioFormat);
   },
-  encode: function (audioFormat) {
-    var audioFormat = audioFormat || Recorder.AUDIO_FORMAT_WAV;
+  encode: function (options) {
+    var audioFormat = options.audioFormat || Recorder.AUDIO_FORMAT_WAV;
+    this.clearBindings("encodingComplete");
+    this.bind("encodingComplete", options["complete"]);
     this.flashInterface().encode(audioFormat);
   },
   getEncodedData: function () {
