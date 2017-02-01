@@ -183,6 +183,8 @@ public class Recorder {
 			lastEncoding = mp3Encoder.mp3Data;
 			mp3Encoder.wavData = null;
 			mp3Encoder.mp3Data = null;
+			// ExternalInterface.call("console.log", "encoding done");
+			triggerEvent('encodingComplete', {});
 		}
 
 		if (!Worker || Worker.current.isPrimordial) {

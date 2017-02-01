@@ -87,7 +87,7 @@ package fr.kikko.lab {
 			dispatchEvent(new ProgressEvent(ProgressEvent.PROGRESS, false, false, percent, 100));
 			
 			trace("encoding mp3...", percent+"%");
-			ExternalInterface.call("console.log", "encoding mp3...", percent + "%");
+			// ExternalInterface.call("console.log", "encoding mp3...", percent + "%");
 
 			if(percent==100) {
 				CModule.free(wavPtr);
