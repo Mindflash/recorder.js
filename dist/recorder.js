@@ -16,6 +16,9 @@ var Recorder = {
   _initialized: false,
   _flashBlockCatched: false,
   options: {},
+  hasFlashPlayerVersion: function (version) {
+    return swfobject.hasFlashPlayerVersion(version || "11.0.0");
+  },
   initialize: function (options) {
     this.options = options || {};
     if (window.location.protocol === "file:") {
