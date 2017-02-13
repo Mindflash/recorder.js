@@ -334,6 +334,7 @@ public class Recorder {
 		buffer.position = 0;
 		buffer.compress();
 		var b64: Base64Encoder = new Base64Encoder();
+		b64.insertNewLines = false;
 		b64.encodeBytes(lastEncoding);
 		return b64.toString();
 	}
