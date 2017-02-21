@@ -370,7 +370,8 @@ public class Recorder {
 		microphone.codec = "Nellymoser";
 		microphone.setSilenceLevel(0);
 		microphone.rate = sampleRate;
-		microphone.gain = 100;
+		microphone.gain = 50;
+    microphone.setUseEchoSuppression(true);
 		microphone.addEventListener(StatusEvent.STATUS, function statusHandler(e: Event) {
 			logger.log('Microphone Status Change');
 			if (microphone.muted) {
@@ -386,7 +387,7 @@ public class Recorder {
 						microphone.removeEventListener(SampleDataEvent.SAMPLE_DATA, recordSampleDataHandler);
 						triggerEvent('recordingCancel', '');
 					}
-				}, RECORD_DATA_TIMEOUT * 1000);
+				}, RECORD_DATA_TIMEOUT * 100);
 			}
 		});
 
